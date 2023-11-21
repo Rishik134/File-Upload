@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/products.css">
+</head>
+<body>
+    <p>Products</p>
+    <div class="all-products">
+        <!--Products goes here-->
+        <% products.forEach(product => { %><div>
+          <div><%= product.productname %> </div>
+          <div><img src='<%= product.productpic %>' ></div>
+          <div><%= product.productprice%></div>
+        </div>
+        <% }); %>
+
+    </div>
+</body>
+<!--<script src="js/add.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    // Use Axios to make a GET request to the server
+    axios.post('http://localhost:3000/products')
+      .then(response => {
+        console.log('Data received from server:', response.data);
+        // Handle the received data as needed
+      })
+      .catch(error => {
+        console.error('Error receiving data from server:', error);
+      });
+  </script>-->
+</html>

@@ -1,0 +1,15 @@
+img{
+    height:100% ;
+    width:100%;
+}
+.all-products {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  
+  .all-products > div {
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+  }
