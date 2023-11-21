@@ -1,18 +1,12 @@
 const funs=require("../model/dbfuns");
-const middleware=require("./middleware");
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const vari=require("./config");
-const { setToken2 } = require('../index');
+
 dotenv.config();
+
 const JWT_SECRET_ADMIN=process.env.JWT_SECRET_ADMIN;
 const JWT_SECRET_USER=process.env.JWT_SECRET_USER;
-const products=async(req,res)=>{
-    const products=await funs.findProduct();
-    console.log(products);
-    res.render("products",{products})
-    
-}
 
 const adminlogin = async (req, res) => {
     var username = req.body.loginUsername;
@@ -100,7 +94,6 @@ const adminupload=(req, res) => {
 }
 
 module.exports={
-    products,
     userlogin,
     usersignup,
     adminlogin,
