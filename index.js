@@ -4,19 +4,18 @@ const dotenv = require('dotenv');
 const ejs = require("ejs");
 dotenv.config();
 const mongoose = require('mongoose');
-const gets=require("./controller/views");
+const gets=require("./model/views");
 const posts=require("./controller/post")
 const middleware=require("./controller/middleware");
 const vari=require("./controller/config")
 
-
-const { JWT_SECRET, MONGO_URI } = process.env;
+const MONGO_URI  = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-const app=express();
+
 
 let Token1=null;
-
+const app=express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine', 'ejs');
@@ -46,7 +45,7 @@ app.get("/products", async (req, res) => {
     try {
         const token = await vari.Token22();
         middleware.authenticateUser(token)(req, res, () => {
-            posts.products(req, res);
+            gets.products(req,res);
         });
     } catch (error) {
         console.error('Error in /products route:', error);
